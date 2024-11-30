@@ -1,9 +1,55 @@
-const inputs = document.querySelectorAll('.controls input');
+const play = document.querySelector(".play");
+const pause = document.querySelector(".pause");
+const state = document.querySelector(".player__button");
+const video = document.querySelector("video");
+const volume = document.querySelector("input[type=range]");
+const backward = document.querySelector(".rewind");
+const forward = document.querySelector(".fastforward");
+const progress_bar = document.querySelector(".progress-bar");
+const progress = document.querySelector(".progress__filled");
+const playbackspeed = document.querySelector("#playback_speed_rate");
+let rate = 1;
+let playState = 0;
+let videoDurationInsec = video.duration;
+let progressLength = getComputedStyle(progress_bar).width;
+playbackspeed.value = `${rate}x`;
 
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-    }
+state.addEventListener("click", () => {
+  if (!playState) {
+    video.play();
+    playState = 1;
+    play.classList.remove("toggle");
+    pause.classList.add("toggle");
+  } else {
+    video.pause();
+    playState = 0;
+    play.classList.add("toggle");
+    pause.classList.remove("toggle");
+  }
+});
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+playbackspeed.addEventListener("click", (e) => {
+  console.log(e);
+  video.playbackRate = parseFloat(e.target.value);
+});
+
+volume.addEventListener("input", (e) => {
+  console.log(e.target.value);
+  video.volume = e.target.value;
+});
+
+backward.addEventListener("click", (e) => {
+  video.currentTime -= 10;
+});
+
+forward.addEventListener("click", (e) => {
+  video.currentTime += 25;
+});
+
+video.addEventListener("timeupdate", () => {
+  let currentTime = parseFloat(video.currentTime);
+  let finalProgress = Math.trunc(
+    (parseFloat(progressLength) / videoDurationInsec) * Math.trunc(currentTime)
+  );
+  progress.style.width = finalProgress + "px";
+});

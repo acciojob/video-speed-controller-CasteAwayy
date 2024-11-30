@@ -1,2 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* Your CSS Code here. */
+body {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player__video {
+  position: relative;
+  /* width: 80% */
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
+.player__video video {
+  /* position: absolute; */
+  width: 100%;
+  /* height: 60%; */
+  margin-bottom: 10px;
+}
+
+.player__video .controls {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.player__video .playback_speed select {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid black;
+  background-color: transparent;
+  /* outline: none; */
+  border-radius: 0%;
+}
+
+.skip {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-skip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  cursor: pointer;
+  & span {
+    cursor: pointer;
+  }
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  /* background-color: red; */
+  height: 10px;
+  border: 1px solid black;
+}
+
+.progress-bar .progress__filled {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: red;
+}
+
+.controls .player__button {
+  position: relative;
+  /* display: block; */
+  /* padding: 5px; */
+  width: 80px;
+  height: 80px;
+  /* background-color: red; */
+}
+
+.player__button > * {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle {
+  display: none;
+}
