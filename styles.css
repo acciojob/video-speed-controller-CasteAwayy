@@ -92,6 +92,7 @@ body {
   align-items: center;
 }
 
-.toggle {
-  display: none;
+.toggle{
+  background-color: white;
 }
+
