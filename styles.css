@@ -10,6 +10,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+.video__player {
+  position: relative;
+  /* width: 80% */
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
 .player__video {
   position: relative;
   /* width: 80% */
@@ -18,14 +26,14 @@ body {
   margin: 20px;
 }
 
-.player__video video {
+.video__player video {
   /* position: absolute; */
   width: 100%;
   /* height: 60%; */
   margin-bottom: 10px;
 }
 
-.player__video .controls {
+.video__player .controls {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -34,7 +42,7 @@ body {
   flex-wrap: wrap;
 }
 
-.player__video .playback_speed select {
+.video__player .playback_speed select {
   padding: 5px;
   font-size: 14px;
   border: 1px solid black;

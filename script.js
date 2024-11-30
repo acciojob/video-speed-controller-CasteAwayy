@@ -40,6 +40,7 @@ volume.addEventListener("input", (e) => {
 
 backward.addEventListener("click", (e) => {
   video.currentTime -= 10;
+  console.log(video.currentTime);
 });
 
 forward.addEventListener("click", (e) => {
