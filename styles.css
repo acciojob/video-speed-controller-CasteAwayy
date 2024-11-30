@@ -90,9 +90,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.toggle{
   background-color: white;
 }
 
+.toggle {
+  /* background-color: white; */
+  z-index: 1000;
+}

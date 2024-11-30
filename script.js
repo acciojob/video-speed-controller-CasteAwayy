@@ -1,6 +1,6 @@
-const play = document.querySelector(".play");
-const pause = document.querySelector(".pause");
-const state = document.querySelector(".player__button");
+const state = document.querySelectorAll(".state");
+// const pause = document.querySelector(".pause");
+const player_btn = document.querySelector(".player__button");
 const video = document.querySelector("video");
 const volume = document.querySelector("input[type=range]");
 const backward = document.querySelector(".rewind");
@@ -14,17 +14,17 @@ let videoDurationInsec = video.duration;
 let progressLength = getComputedStyle(progress_bar).width;
 playbackspeed.value = `${rate}x`;
 
-state.addEventListener("click", () => {
+player_btn.addEventListener("click", () => {
   if (!playState) {
     video.play();
     playState = 1;
-    play.classList.remove("toggle");
-    pause.classList.add("toggle");
+    state[1].classList.remove('toggle');
+    state[0].classList.add('toggle');
   } else {
     video.pause();
     playState = 0;
-    play.classList.add("toggle");
-    pause.classList.remove("toggle");
+    state[0].classList.remove('toggle');
+    state[1].classList.add('toggle');
   }
 });
 
@@ -49,7 +49,7 @@ forward.addEventListener("click", (e) => {
 video.addEventListener("timeupdate", () => {
   let currentTime = parseFloat(video.currentTime);
   let finalProgress = Math.trunc(
-    (parseFloat(progressLength) / videoDurationInsec) * Math.trunc(currentTime)
+    Math.trunc(parseFloat(progressLength) / videoDurationInsec) * Math.trunc(currentTime)
   );
   progress.style.width = finalProgress + "px";
 });
